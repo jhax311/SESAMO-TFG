@@ -1,0 +1,5 @@
+sesamo --> se encuentra la API de PHP
+sesamo-web --> la parte front en produccion
+sesamoWeb2 -->la parte front  antes de hacer el build de angualr
+configuracionBDD---> viene un fochero de incializacion, por sis e quiere crear la base de datos
+  --> en el archivo conf : vienen los datos de configuracion para la base de datos,
