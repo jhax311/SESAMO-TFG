@@ -1,0 +1,50 @@
+<div class="container-fluid w-100 pt-3 contenedor">
+    <div class="row mb-4 justify-content-between w-100 inpustM">
+      <div class="col-12 col-sm-6 col-md-6">
+        <mat-form-field appearance="outline" class="w-100 small-height">
+          <mat-label>Seleccione un Hospital</mat-label>
+          <mat-select id="hospital" (selectionChange)="selectHospital($event)" class="small-height">
+            <mat-option *ngFor="let hospital of hospitales" [value]="hospital.id_centro">{{hospital.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <mat-form-field appearance="outline" class="w-100 small-height">
+          <mat-label>Seleccione la planta</mat-label>
+          <mat-select id="plantas" (selectionChange)="selectPlanta($event)" [formControl]="plantaReset">
+            <mat-option *ngFor="let planta of plantas" [value]="planta">{{planta}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <div class="row mb-4">
+      <div class="col-md-12 camasC">
+        <div class="row">
+          <div *ngFor="let cama of camas" class="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-1 mb-0 d-flex justify-content-center">
+            <div class="customHover card shadow small-card text-center pt-1"
+              [ngClass]="{'seleccionada': cama === camaSeleccionada, 'bg-danger text-white': cama.bloqueada === 'S', 'bg-seleccionada': cama === camaSeleccionada && cama.bloqueada === 'S'}"
+              (click)="camaSelecionada(cama)">
+              <div class="card-img-wrapper py-0">
+                <ng-container *ngIf="cama.estado === 'Ocupada'">
+                  <img *ngIf="cama.paciente && cama.paciente[0].Sexo === 'Hombre' && cama.paciente[0].ingresado == '1'" src="../../../assets/camaHombre.png"
+                    class="card-img-top small-card-img img-fluid" alt="Hombre">
+                  <img *ngIf="cama.paciente && cama.paciente[0].Sexo === 'Mujer' && cama.paciente[0].ingresado == '1'" src="../../../assets/camaMujer.png"
+                    class="card-img-top small-card-img img-fluid" alt="Mujer">
+                </ng-container>
+                <ng-container *ngIf="cama.estado === 'Disponible'">
+                  <img src="../../../assets/cama.png" class="card-img-top small-card-img img-fluid" alt="Disponible">
+                </ng-container>
+              </div>
+              <div class="card-body py-0">
+                <h5 class="card-title mt-1">
+                  {{cama.id_planta}}<ng-container *ngIf="cama.id_habitacion < 10">0</ng-container>{{cama.id_habitacion}} {{cama.letra}}
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,213 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Cuarto cuadrado -->
+        <div class="col-2 d-none d-md-block d-lg-block  bg-ama  square squareCenter">&nbsp;</div>
+        <!-- Quinto cuadrado (Especial) -->
+        <div class=" col-12 col-md-8 bg-light ">
+            <div class="row bg-azulC  square squareCenterMini">
+
+            </div>
+            <div class="row bg-verdeO  square squareCenterMini">
+
+            </div>
+        </div>
+        <!-- Sexto cuadrado -->
+        <div class="col-2 d-none d-md-block d-lg-block  bg-light">
+            <div class="row bg-azulC  square squareCenterMini">
+
+            </div>
+            <div class="row bg-ama  square squareCenterMini">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Cuarto cuadrado -->
+        <div class="col-2 d-none d-md-block d-lg-block  d-none d-md-block d-lg-block bg-verdeO  square squareCenter">
+            &nbsp;</div>
+        <!-- Quinto cuadrado (Especial) -->
+        <div class=" col-12 col-md-8 bg-light  square squareCenter">
+            <h1
+                class=" text-dark display-1   h-75 w-75 fs-1 p-0 m-0  d-flex justify-content-center  align-items-center">
+                SESCAM</h1>
+
+        </div>
+        <!-- Sexto cuadrado -->
+        <div class="col-2 d-none d-md-block d-lg-block  bg-azulO  square squareCenter">&nbsp;</div>
+    </div>
+    <div class="row especial">
+        <!-- Séptimo cuadrado -->
+        <div class="col-2 d-none d-md-block d-lg-block  bg-azulO  square squareCenter">&nbsp;</div>
+        <!-- Octavo cuadrado -->
+        <div class=" col-12 col-md-8 bg-centro  square  ">
+
+
+            <div class="container-fluid  d-flex flex-column justify-content-center align-items-center">
+                <div class="container-md custom-width bg-transparent p-4 rounded custom-shadow">
+                    <h2 class="text-center fs-2 my-2">INICIAR SESIÓN</h2>
+                    <form class="text-center my-4" [formGroup]="loginForm" (ngSubmit)="iniciarSesion(loginForm.value)">
+                        <div class="mb-3">
+                            <mat-form-field appearance="fill" class="w-100">
+                                <mat-label>Usuario</mat-label>
+                                <input matInput type="text" id="usuario" formControlName="usuario" required>
+                                <mat-icon matSuffix>person</mat-icon>
+                                <mat-error>Campo Requerido</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="mb-3">
+                            <mat-form-field appearance="fill" class="w-100">
+                                <mat-label>Contraseña</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" id="password"
+                                    formControlName="password" required>
+                                <mat-icon style="color: inherit" matSuffix (click)="clickEvent($event)"
+                                    [attr.aria-label]="hide ? 'Show password' : 'Hide password'"
+                                    [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error>Campo Requerido</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="text-center">
+                            <div class="d-inline-block buttons-container">
+                                <button type="submit" class="btn btn-primary pruebaOrigen" [disabled]="loginForm.invalid">Iniciar
+                                    Sesión</button>
+                                <button type="button" class="btn btn-dark bg-dark" data-bs-toggle="modal"
+                                    data-bs-target="#registroModal">
+                                    Registrarse
+                                </button>
+                            </div>
+                            <div class="d-block mt-2">
+                                <a href="#" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">¿Olvidaste tu contraseña?</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--   </div>
+           </div>-->
+        </div>
+        <!-- Noveno cuadrado -->
+        <div class="col-2 d-none d-md-block d-lg-block  bg-verde  square squareCenter">&nbsp;</div>
+    </div>
+    
+
+</div>
+<!-- modal  registro-->
+<div class="modal  fade" #registroModal id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header  pruebaOrigen  ">
+                <div class="w-100 d-flex justify-content-center ">
+                    <h2 class="modal-title display-1 text-white" id="registroModalLabel">REGISTRO</h2>
+                </div>
+                <button #closeButton type="button" class="btn-close custom-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body   ">
+                <app-registro (cerrarModal)="cerrarModal()"></app-registro>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal reset password-->
+<div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center align-items-center">
+        <div class="modal-content">
+            <div class="modal-header pruebaOrigen text-white">
+                <h5 class="modal-title fs-4" id="resetPasswordModalLabel">¿Olvidaste tu contraseña?</h5>
+                <button type="button" class="btn-close btn-close-white" #closeButtonRC data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="resetPasswordForm" (ngSubmit)="recuperarContrasena(resetPasswordForm.value)">
+                    <div class="mb-3">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Nombre de usuario</mat-label>
+                            <input matInput type="text" formControlName="usuario" required>
+                            <mat-error>Nombre de usuario es requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="alert alert-info text-body" role="alert">
+                        Se enviará un correo electrónico con el código de recuperación.
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="reset" class="btn btn-dark me-2" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary pruebaOrigen" [disabled]="resetPasswordForm.invalid">Enviar</button>
+                    </div>              
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="codigoRecuperacionModal" #codeModal tabindex="-1" aria-labelledby="codigoRecuperacionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center align-items-center">
+        <div class="modal-content">
+            <div class="modal-header pruebaOrigen text-white">
+                <h5 class="modal-title fs-4" id="codigoRecuperacionModalLabel">Insertar Código de Recuperación</h5>
+                <button type="button" class="btn-close btn-close-white" #closeButtonMc data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="codigoRecuperacionForm" (ngSubmit)="verificarCodigo(codigoRecuperacionForm.value)">
+                    <div class="mb-3">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Código de recuperación</mat-label>
+                            <input matInput type="text" formControlName="codigo" required>
+                            <mat-error>Código de recuperación es requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        Inserte el código de recuperación que le hemos enviado al correo.
+                    </div>
+                    <div class="d-flex justify-content-end"> 
+                        <button type="reset" class="btn btn-dark me-2" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn pruebaOrigen text-white" [disabled]="codigoRecuperacionForm.invalid">Verificar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="nuevaContrasenaModal" #nuevaPasswordModal tabindex="-1" aria-labelledby="nuevaContrasenaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center align-items-center">
+        <div class="modal-content">
+            <div class="modal-header pruebaOrigen text-white">
+                <h5 class="modal-title fs-4" id="nuevaContrasenaModalLabel">Nueva Contraseña</h5>
+                <button type="button" class="btn-close btn-close-white" #closeButtonNC data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="nuevaContrasenaForm" (ngSubmit)="cambiarContrasena()">
+                    <div class="mb-3">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Nueva Contraseña</mat-label>
+                            <input matInput [type]="ocultarPass ? 'password' : 'text'" formControlName="nuevaContrasena" required>
+                            <mat-icon matSuffix (click)="ocultarPass = !ocultarPass">
+                                {{ocultarPass ? 'visibility_off' : 'visibility'}}
+                            </mat-icon>
+                            <mat-error *ngIf="nuevaContrasenaForm.get('nuevaContrasena')?.hasError('required')">Nueva contraseña es requerida</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="mb-3">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Confirmar Contraseña</mat-label>
+                            <input matInput [type]="ocultarPassCon? 'password' : 'text'" formControlName="confirmarContrasena" required>
+                            <mat-icon matSuffix (click)="ocultarPassCon= !ocultarPassCon">
+                                {{ocultarPassCon? 'visibility_off' : 'visibility'}}
+                            </mat-icon>
+                            <mat-error *ngIf="nuevaContrasenaForm.get('confirmarContrasena')?.hasError('required')">Confirmar contraseña es requerida</mat-error>
+                            <mat-hint *ngIf="nuevaContrasenaForm.hasError('passwordMismatch')" class="text-danger">Las contraseñas no coinciden.</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="reset" class="btn btn-dark me-2" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary pruebaOrigen" [disabled]="nuevaContrasenaForm.invalid">Cambiar Contraseña</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,140 @@
+RewriteEngine On
+
+
+# Configurar documentos de error
+ErrorDocument 403 /sesamo/error/error403.json
+ErrorDocument 404 /sesamo/error/error404.json
+
+# Redirigir nombres sin extensión a nombre.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/.]+)$ $1.php [L]
+
+# Evitar poner las extensiones php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+# Evitar poner las extensiones html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+
+# Agregar regla para /pacientes sin la extensión .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^pacientes$ pacientes.php [L]
+
+# Agregar regla para /pacientes/X/{valor} sin la extensión .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^pacientes/([^/]+)/([^/]+)$ pacientes.php [L] #todo lo que avs post pacientes/x/x lo ejecuta el archivo pero no lo lleva a .php
+
+
+# Agregar regla para /usuarios/login sin la extensión .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^usuarios/(login|registro|verificar)$ usuarios.php [L]
+
+
+# Agregar regla para /usuarios/login sin la extensión .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ingresos$ ingresos.php [L]
+RewriteRule ^ingresos/([^/]+)/([^/]+)$ ingresos.php [L] #todo lo que avs post pacientes/x/x lo ejecuta el archivo pero no lo lleva a .php
+
+
+
+# Agregar regla para /perfiles sin la extensión .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^perfil$ perfil.php [L]
+# Agregar regla para /centros sin la extensión .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^centros$ centros.php [L]
+
+#zonasss
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^zonas$ zonas.php [L]
+RewriteRule ^zonas/([^/]+)$ zonas.php [L] #todo lo que avs post pacientes/x/x lo ejecuta el archivo pero no lo lleva a .php
+
+#camas
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^camas$ camas.php [L]
+#camas por centro 
+RewriteRule ^camas/centro/([^/]+)$ camas.php [L] #todo lo que avs post pacientes/x/x lo ejecuta el archivo pero no lo lleva a .php
+#camas por centro y planta
+RewriteRule ^camas/centro/([^/]+)/([^/]+)$ camas.php [L] #todo lo que avs post pacientes/x/x lo ejecuta el archivo pero no lo lleva a .php
+RewriteRule ^camas/plantas/([^/]+)$ camas.php [L] #todo lo que avs post pacientes/x/x lo ejecuta el archivo pero no lo lleva a .php
+
+#aletas
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^alertas$ alertas.php [L]
+RewriteRule ^alertas/([^/]+)$ alertas.php [L] #todo lo que avs post pacientes/x/x lo ejecuta el archivo pero no lo lleva a .php
+
+
+
+
+# En caso de que el archivo solicitado no exista en la carpeta, nos llevará al index
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^([^/]+)/?$ index.php?url=$1 [L,QSA]
+
+#pronvicias comunidades etc
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^provincias$ provincias.php [L]
+RewriteRule ^provincias/([^/]+)$ provincias.php [L]
+
+##hoja prescripcion
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^hojasPrescripcion$ hojasPrescripcion.php [L]
+RewriteRule ^hojasPrescripcion/([^/]+)$ hojasPrescripcion.php [L] 
+#patologias
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^patologia$ patologia.php [L]
+RewriteRule ^patologia/([^/]+)$ patologia.php [L] 
+##notasEnfermeria
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^notasEnfermeria$ notasEnfermeria.php [L]
+RewriteRule ^notasEnfermeria/([^/]+)$ notasEnfermeria.php [L] 
+
+#altas
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^alta$ alta.php [L]
+RewriteRule ^alta/([^/]+)$ alta.php [L] 
+#contraseña
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^alta$ alta.php [L]
+RewriteRule ^recuperarPassword recuperarPassword.php [L] 
+#comprobar
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^comprobar$ comprobar.php [L]
+#viistas
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^visitas$ visitas.php [L]
+RewriteRule ^visitas/([^/]+)$ visitas.php [L] 
+
+
+
+
+
+
+# Reescribir URLs no existentes a los documentos de error específicos
+RewriteCond %{REQUEST_URI} ^/sesamo
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . - [R=404,L]
+
