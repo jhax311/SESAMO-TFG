@@ -1,8 +1,0 @@
-{
-    "/sesamo": {
-      "target": "http://sesamo.sytes.net",
-      "secure": false,
-      "changeOrigin": true
-    }
-  }
-  
