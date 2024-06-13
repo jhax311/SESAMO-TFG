@@ -1,5 +1,5 @@
 <?php
-$configContent = file_get_contents('config.json');
+$configContent = file_get_contents('config');
 
 if ($configContent === false) {
     die("No se pudo leer el archivo de configuración.");
