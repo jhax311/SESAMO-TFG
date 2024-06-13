@@ -1,0 +1,9 @@
+::ng-deep .cdk-overlay-container { z-index: 9997;}
+
+
+.custom-blue-dark{
+    background-color: #11295a !important;
+  }
+  .pruebaOrigen {
+    background: rgba(27, 60, 107, 1);
+  }

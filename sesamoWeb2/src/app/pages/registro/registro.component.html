@@ -1,0 +1,102 @@
+<form [formGroup]="registroDos" (ngSubmit)="registrarse()" class="blancoF">
+
+  <div class="row ">
+    <!-- Columna azul izquierda -->
+    <div class="col-md-2 text-azul bg-transparent d-none d-lg-block">
+    </div>
+    <!-- Columna con el formulario -->
+    <div class="col-12 col-md-12 col-lg-8 bg-light">
+      <div class="mb-1">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Usuario</mat-label>
+          <input matInput type="text" id="usuarioR" formControlName="usuario" required>
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-hint></mat-hint>
+          <mat-error>Ingrese un nombre de usuario</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-2 custom-mb">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" id="contrasenaR" formControlName="password" required>
+          <mat-icon style="color: inherit" matSuffix (click)="clickEvent($event)"
+            [attr.aria-label]="hide ? 'Show password' : 'Hide password'" [attr.aria-pressed]="hide">{{hide ?
+            'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error>Ingrese una contraseña válida</mat-error>
+          <mat-hint>Debe tener al menos 8 caracteres e incluir mayúscula, minúscula, número y carácter
+            especial</mat-hint>
+
+        </mat-form-field>
+      </div>
+      <div class="mb-2 mt-1">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" id="emailR" formControlName="email" required>
+          <mat-icon matSuffix>mail_outline</mat-icon>
+          <mat-error *ngIf="this. registroDos.get('correo')?.hasError('required')">El correo electrónico es
+            obligatorio</mat-error>
+          <mat-error *ngIf="this. registroDos.get('correo')?.hasError('validarEmail')">Ingrese un email
+            válido</mat-error>
+          <mat-hint><i>example &#64;dominio.com</i></mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="mb-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Perfil</mat-label>
+          <mat-select formControlName="perfil" required panelClass="customClass">
+            <mat-option *ngFor="let perfil of perfiles" [value]="perfil.id_rol"
+              [disabled]="perfil.nombre !== 'Administrativo'" tabindex="3">
+              {{ perfil.nombre }}
+            </mat-option>
+
+          </mat-select>
+          <!--   <mat-icon matSuffix>shield_outline</mat-icon> -->
+        </mat-form-field>
+      </div>
+
+      <div class="mb-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" id="nombreR" formControlName="nombre" required>
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-error>Ingrese su nombre</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mb-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Apellidos</mat-label>
+          <input matInput type="text" id="apellidos" formControlName="apellidos" required>
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-error>Ingrese sus apellidos</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mb-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Centro</mat-label>
+
+          <mat-select formControlName="centro" required panelClass="customClass">
+            <mat-option *ngFor="let centro of centros" [value]="centro.id_centro"
+              tabindex="3">{{centro.nombre}}</mat-option>
+          </mat-select>
+          <!--   <mat-error>Selecione un centro valido</mat-error> -->
+        </mat-form-field>
+      </div>
+
+
+
+
+
+    </div>
+    <!-- Columna azul derecha -->
+    <div class="col-md-2 text-white  bg-transparent d-none d-lg-block">
+    </div>
+  </div>
+
+  <div class="container-fluid d-flex justify-content-end align-items-center mt-2">
+    <button type="reset" class="btn btn-dark mx-2" (click)="hola()">Cerrar</button>
+    <button type="submit" [disabled]="registroDos.invalid" class="btn pruebaOrigen text-white mx-2">Registrarse</button>
+
+  </div>
+
+</form>

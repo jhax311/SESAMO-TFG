@@ -1,0 +1,78 @@
+
+<form [formGroup]="ingresarPacienteForm" (ngSubmit)="ingresarPaciente(ingresarPacienteForm.value)">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>NHC</mat-label>
+                    <input matInput type="text" id="nhcf" formControlName="nhc">
+                </mat-form-field>
+            </div><!-- 
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>NIF</mat-label>
+                    <input matInput type="text" id="nif" formControlName="nif">
+
+                </mat-form-field>
+            </div>-->
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Ámbito</mat-label>
+                    <mat-select id="ambito" formControlName="id_ambito">
+                        @for (ambito of ambitos; track ambito) {
+                        <mat-option [value]="ambito.id_ambito">{{ambito.nombre}}</mat-option>
+                        }
+                    </mat-select>
+                    <mat-error>Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Estado HC</mat-label>
+                    <mat-select id="estado_nhc" formControlName="estado_nhc">
+                        <mat-option value="Provisional">Provisional</mat-option>
+                    </mat-select>
+                    <mat-error>Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Cama</mat-label>
+                    <input matInput type="text" id="cama" formControlName="id_cama" [value]="camaName" readonly>
+                    <mat-error>Campo Requerido</mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" id="fecha" formControlName="fecha" readonly>
+                    <mat-error>Campo Requerido</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Hora</mat-label>
+                    <input matInput type="text" id="hora" formControlName="hora" readonly>
+                    <mat-error>Campo Requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="modal-footer custom-blue-dark">
+     
+            <button type="reset" #btnClose  class="btn btn-dark" data-bs-dismiss="modal"
+            (click)="this.ingresarPacienteForm.reset()">Cerrar</button> <!--(click)="this.ingresarPacienteForm.reset()-->
+               <button type="submit" class="btn pruebaOrigen text-white">Ingresar</button>
+        </div>
+    </div>
+
+</form>

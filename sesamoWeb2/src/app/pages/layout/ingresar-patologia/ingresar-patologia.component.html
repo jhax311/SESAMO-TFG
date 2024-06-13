@@ -1,0 +1,72 @@
+<form [formGroup]="fomIngresarPato" (ngSubmit)="crearPato(fomIngresarPato.value)">
+  <div class="modal-body">
+    <!-- Contenido del modal -->
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Fecha de Inicio</mat-label>
+          <input matInput formControlName="fecha_inicio" type="date">
+          <mat-error *ngIf="fomIngresarPato.get('fecha_inicio')?.hasError('required')">La fecha de inicio es
+            requerida.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Fecha de Diagnóstico</mat-label>
+          <input matInput formControlName="fecha_diagnostico" type="date" readonly>
+          <mat-error *ngIf="fomIngresarPato.get('fecha_diagnostico')?.hasError('required')">La fecha de diagnóstico es
+            requerida.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Síntomas</mat-label>
+          <input matInput formControlName="sintomas" type="text">
+          <mat-error *ngIf="fomIngresarPato.get('sintomas')?.hasError('required')">Los síntomas son
+            requeridos.</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Diagnóstico</mat-label>
+          <input matInput formControlName="diagnostico" type="text">
+          <mat-error *ngIf="fomIngresarPato.get('diagnostico')?.hasError('required')">El diagnóstico es
+            requerido.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Especialidad</mat-label>
+          <mat-select formControlName="especialidad">
+            <mat-option value="Medicina">Medicina</mat-option>
+            <mat-option value="Enfermería">Enfermería</mat-option>
+            <mat-option value="Cirugía">Cirugía</mat-option>
+          </mat-select>
+          <mat-error *ngIf="fomIngresarPato.get('especialidad')?.hasError('required')">
+            La especialidad es requerida.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Codificación</mat-label>
+          <mat-select formControlName="codificacion">
+            <mat-option value="Sí">Sí</mat-option>
+            <mat-option value="No">No</mat-option>
+          </mat-select>
+          <mat-error *ngIf="fomIngresarPato.get('codificacion')?.hasError('required')">
+            La codificación es requerida.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="reset" class="btn btn-dark" #btnClose data-bs-dismiss="modal">Cerrar</button>
+    <button type="submit" class="btn pruebaOrigen text-white">Guardar</button>
+  </div>
+</form>

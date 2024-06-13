@@ -1,0 +1,98 @@
+<form [formGroup]="buscar" (ngSubmit)="buscars(buscar)">
+    <div class="modal-body">
+        <table class="table">
+            <tbody>
+
+
+                <tr>
+                    <div style="background: linear-gradient(to right, rgba(27, 60, 107, 1), rgba(13, 202, 240, 0.041) );"></div>
+
+                </tr>
+
+                <!--NHC and NIF -->
+                <tr class="row">
+                    <div class="form-group col-12 col-lg-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>NHC</mat-label>
+                            <input matInput type="number" formControlName="nhc" id="inputNHC" [min]="0"
+                                placeholder="Número de Historia Clínica">
+                        </mat-form-field>
+
+                    </div>
+                    <div class="form-group col-12 col-lg-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>NIF</mat-label>
+                            <input matInput type="text" id="inputNIF" formControlName="nif" 
+                                placeholder="Número de Identificación Fiscal">
+                        </mat-form-field>
+                    </div>
+                </tr>
+                <!--Area de Salud and Zona Basica de Salud -->
+                <tr>
+                    <div style="background: linear-gradient(to right, rgba(27, 60, 107, 1), rgba(13, 202, 240, 0.041) );"></div>
+
+                </tr>
+                <tr class="row">
+                    <div class="form-group col-12 col-lg-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Área de salud</mat-label>
+                            <mat-select formControlName="area">
+                                <mat-option [value]="">Seleccionar área</mat-option>
+                                <mat-option *ngFor="let area of areas" [value]="area.id_area_salud"
+                                    tabindex="3">{{area.nombre}}</mat-option>
+                            </mat-select>
+                            <!--   <mat-icon matSuffix>shield_outline</mat-icon> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group col-12 col-lg-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Zona Básica de Salud</mat-label>
+                            <mat-select formControlName="zona">
+                                <mat-option *ngFor="let zona of zonas" [value]="zona.id_zona_basica_salud"
+                                    tabindex="3">{{zona.nombre}}</mat-option>
+                            </mat-select>
+                            <!--   <mat-icon matSuffix>shield_outline</mat-icon> -->
+                        </mat-form-field>
+
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal-footer ">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn pruebaOrigen text-white" [disabled]="desactivado">Buscar</button>
+    </div>
+</form>
+
+
+<div class="modal " #seleccionarPacienteModal id="selecionarPacienteModal " tabindex="-1"
+    aria-labelledby="selecionarPacienteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header custom-blue-dark">
+                <h5 class="modal-title text-light fs-4" id="selecionarPacienteLabel">Selecionar Paciente</h5>
+                <button type="button" class="btn-close btn-close-white  " data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <form [formGroup]="buscar" (ngSubmit)="buscars(buscar)">
+            <div class="modal-body">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Seleccione paciente</mat-label>
+                        <mat-select formControlName="nif">
+                            <mat-option *ngFor="let paciente of listaPacientes" [value]="paciente.nif"
+                                tabindex="3">{{paciente.nombre}} {{paciente.apellido1}}
+                                {{paciente.apellido1}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" (click)="activarTodoo()"  (click)="activarTodo()" >Cerrar</button>
+                <button type="submit" class="btn pruebaOrigen  text-white" [disabled]="desactivado" (click)="activarTodo()" >Selecionar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

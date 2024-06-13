@@ -1,0 +1,265 @@
+<form [formGroup]="pacienteForm" > <!-- (ngSubmit)="modificar(pacienteForm.value)""-->
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>NHC</mat-label>
+                    <input matInput type="text" id="nhcf" formControlName="nhc" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>NIF</mat-label>
+                    <input matInput type="text" id="nif" formControlName="nif" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Sexo</mat-label>
+                    <input matInput type="text" id="sexo" formControlName="sexo" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" id="nombre" formControlName="nombre" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Apellido1</mat-label>
+                    <input matInput type="text" id="apellido1" formControlName="apellido1" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Apellido2</mat-label>
+                    <input matInput type="text" id="apellido2" formControlName="apellido2" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Estado Civil</mat-label>
+                    <input matInput type="text" id="estadoCivil" formControlName="estadoCivil">
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input matInput type="text" id="fechaNacimiento" formControlName="fechaNacimiento" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100 ">
+                    <mat-label>Estudios</mat-label>
+                    <input matInput type="text" id="estudios" formControlName="estudios">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Teléfono 1</mat-label>
+                    <input matInput type="number" id="telefono1" formControlName="telefono1" [min]="0">
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Teléfono 2</mat-label>
+                    <input matInput type="number" id="telefono2" formControlName="telefono2" [min]="0">
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Móvil</mat-label>
+                    <input matInput type="number" id="movil" formControlName="movil" [min]="0">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Nacionalidad</mat-label>
+                    <input matInput type="text" id="nacionalidad" formControlName="nacionalidad" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Fallecido</mat-label>
+                    <input matInput type="text" id="fallecido" formControlName="fallecido" readonly>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+
+        <div class="my-4"
+            style="background: linear-gradient(to right, rgba(27, 60, 107, 1), rgba(13, 202, 240, 0.041)); height: 5%;">
+            &nbsp;</div>
+
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Comunidad Autónoma</mat-label>
+                    <input matInput type="text" id="cAutonoma" formControlName="cAutonoma">
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Provincia</mat-label>
+                    <input matInput type="text" id="provincia" formControlName="provincia">
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Población</mat-label>
+                    <input matInput type="text" id="poblacion" formControlName="poblacion">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Dirección</mat-label>
+                    <input matInput type="text" id="direccion" formControlName="direccion">
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Código Postal</mat-label>
+                    <input matInput type="text" id="cp" formControlName="cp">
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="my-4"
+            style="background: linear-gradient(to right, rgba(27, 60, 107, 1), rgba(13, 202, 240, 0.041)); height: 5%;">
+            &nbsp;</div>
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>NumeroSS</mat-label>
+                    <input matInput type="text" id="numeroSS" formControlName="numeroSS" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Titular</mat-label>
+                    <input matInput type="text" id="titular" formControlName="titular" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Regimen</mat-label>
+                    <input matInput type="text" id="regimen" formControlName="regimen" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>TIS</mat-label>
+                    <input matInput type="text" id="tis" formControlName="tis" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Médico</mat-label>
+                    <input matInput type="text" id="medico" formControlName="medico" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>CAP</mat-label>
+                    <input matInput type="text" id="cap" formControlName="cap" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Zona</mat-label>
+                    <input matInput type="text" id="zona" formControlName="zona" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Área</mat-label>
+                    <input matInput type="text" id="area" formControlName="area" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="my-4 text-white"
+            style="background: linear-gradient(to right, rgba(27, 60, 107, 1), rgba(13, 202, 240, 0.041)); height: 5%;">
+           Nacimiento</div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100 ">
+                    <mat-label>Nacimiento</mat-label>
+                    <input matInput type="text" id="cNacimiento" formControlName="nacimiento" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Comunidad Autónoma de Nacimiento</mat-label>
+                    <input matInput type="text" id="cAutonomaNacimiento" formControlName="cAutonomaNacimiento" readonly>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Provincia de Nacimiento</mat-label>
+                    <input matInput type="text" id="provinciaNacimiento" formControlName="provinciaNacimiento" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Población de Nacimiento</mat-label>
+                    <input matInput type="text" id="poblacionNacimiento" formControlName="poblacionNacimiento" readonly>
+                </mat-form-field>
+            </div>
+            <!-- 
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha de nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+                <mat-datepicker-toggle matSuffix [for]="picker" pattern="\d{4}-\d{2}-\d{2}"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>-->
+        </div>
+
+
+
+    </div>
+    <div class="modal-footer custom-blue-dark">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn pruebaOrigen text-white" (click)="modificar(pacienteForm.value)">Modificar</button>
+      
+    </div>
+
+</form>

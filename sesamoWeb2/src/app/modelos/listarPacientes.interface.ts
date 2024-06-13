@@ -1,0 +1,33 @@
+export interface ListarPacientesI {
+    nhc: string;
+    nif: string;
+    numeroSS: string;
+    nombre: string;
+    apellido1: string;
+    apellido2: string;
+    sexo: string;
+    fechaNacimiento: string;
+    telefono1: string;
+    telefono2: string;
+    movil: string;
+    estadoCivil: string;
+    estudios: string;
+    fallecido: string;
+    nacionalidad: string;
+    cAutonoma: string;
+    provincia: string;
+    poblacion: string;
+    cp: string;
+    direccion: string;
+    titular: string;
+    regimen: string;
+    tis: string;
+    medico: string;
+    cap: string;
+    zona: string;
+    area: string;
+    nacimiento: string;
+    cAutonomaNacimiento: string;
+    provinciaNacimiento: string;
+    poblacionNacimiento: string;
+}
