@@ -1,0 +1,9 @@
+{
+  "conexion": {
+    "server": "localhost",
+    "user": "root",
+    "password": "..1791..",
+    "database": "sesamo",
+    "port": "3306"
+  }
+}
