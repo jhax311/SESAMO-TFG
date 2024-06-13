@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 
 $dbNombre = $dbConfig['database'];
 $existe= "SHOW DATABASES LIKE '$dbNombre'";
-$result = $conn->query($dbCheckQuery);
+$result = $conn->query($existe);
 
 if ($result->num_rows == 0) {
     $createDbQuery = "CREATE DATABASE $dbNombre";
@@ -41,16 +41,23 @@ if ($sqlContent === false) {
     die("No se pudo leer el archivo SQL.");
 }
 
-if ($conn->multi_query($sqlContent)) {
-    do {
-        if ($result = $conn->store_result()) {
-            $result->free();
+$conn->begin_transaction();
+
+try {
+    $queries = explode(";", $sqlContent);
+    foreach ($queries as $query) {
+        $query = trim($query);
+        if (!empty($query)) {
+            if ($conn->query($query) === false) {
+                throw new Exception("Error al ejecutar la consulta: " . $conn->error);
+            }
         }
-    } while ($conn->next_result());
-    
+    }
+    $conn->commit();
     echo "Script SQL ejecutado exitosamente.";
-} else {
-    echo "Error al ejecutar el script SQL: " . $conn->error;
+} catch (Exception $e) {
+    $conn->rollback();
+    die($e->getMessage());
 }
 
 $conn->close();
